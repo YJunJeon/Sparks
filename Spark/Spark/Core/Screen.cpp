@@ -23,7 +23,7 @@ Screen::~Screen() = default;
 void Screen::Open()
 {
 	m_title = m_config->GetValue<string>("application", "title");
-	m_clearColor = m_config->GetValue<Color>("window", "cirCol");
+	m_clearColor = m_config->GetValue<Color>("window", "clrCol");
 
 	m_width = m_config->GetValue<int>("window", "width");
 	m_height = m_config->GetValue<int>("window", "height");
