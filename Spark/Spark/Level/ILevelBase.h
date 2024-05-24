@@ -2,7 +2,9 @@
 
 
 class LevelManager;
-
+class Config;
+class Screen;
+class ActorWorld;
 
 class ILevelBase
 {
@@ -11,17 +13,21 @@ class ILevelBase
 public:
 	const char* Name() const;
 
-	//SceneObject* GetWorld() const;
+	ActorWorld* GetWorld() const;
 
 protected:
 	const char* m_name;
 
 	LevelManager* m_levelManager;
-	//SceneObject* m_world;
 
 protected:
 	ILevelBase(const char* _name);
 	virtual ~ILevelBase();
+
+protected:
+	Config* GetConfig() const;
+	Screen* GetScreen() const;
+
 
 protected:
 	virtual void BeginPlay() = 0;
@@ -31,5 +37,14 @@ protected:
 
 	virtual void EndPlay() = 0;
 
+private:
+	Config* m_config;
+	Screen* m_screen;
+	ActorWorld* m_world;
+
+	bool m_isConfigured;
+
+private:
+	void Configure(Config* _config, Screen* _screen);
 };
 
